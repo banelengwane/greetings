@@ -1,4 +1,5 @@
 function greeter(){
+  var empty = '';
   var tempObj = {};
   var takeIn = function(name){
     if(Number.isNaN(Number(name))){
@@ -37,15 +38,23 @@ function greeter(){
     var sum = 0;
     for(var key in tempObj){
       if(tempObj.hasOwnProperty(key)){
-        sum +=1;
+        sum ++;
       }
     }
     return sum;
   }
+  function returnMap(){
+    return tempObj;
+  }
 
+  function clear(){
+    return empty;
+  }
   return{
     greet,
     greetCount,
-    takeIn
+    takeIn,
+    returnMap,
+    clear
   };
 }

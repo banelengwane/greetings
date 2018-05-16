@@ -3,6 +3,7 @@ var greetBtn = document.querySelector('.greetMeBtn');
 var lang = document.querySelector(".language");
 var count = document.querySelector(".numberOfGreetings")
 var message = document.querySelector(".printHere");
+var resetBtn = document.querySelector(".resetBtn");
 
 var set = greeter();
 function greetMe(){
@@ -10,12 +11,15 @@ function greetMe(){
   var checkRadioButton = document.querySelector("input[name='language']:checked");
   if(checkRadioButton){
     var language = checkRadioButton.value;
-    set.takeIn(userName);
-    set.greet(userName, language);
+    set.takeIn(userName.toLowerCase());
+    set.greet(userName.toLowerCase(), language);
 
     count.innerHTML = set.greetCount();
-    message.innerHTML = set.greet(userName, language);  
+    message.innerHTML = set.greet(userName, language);
+    nameElement.innerHTML = set.clear();
   }
+
+
 
 }
 greetBtn.addEventListener('click', greetMe);
