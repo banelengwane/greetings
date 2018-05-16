@@ -16,10 +16,13 @@ function greetMe(){
 
     count.innerHTML = set.greetCount();
     message.innerHTML = set.greet(userName, language);
-    nameElement.innerHTML = set.clear();
+    document.getElementById('theName').value = '';
   }
-
-
-
 }
 greetBtn.addEventListener('click', greetMe);
+
+function resetMe(){
+  count.innerHTML = 0;
+  document.getElementById('theName').value = '';
+}
+resetBtn.addEventListener('click', resetMe);
