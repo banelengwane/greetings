@@ -5,7 +5,9 @@ var count = document.querySelector(".numberOfGreetings")
 var message = document.querySelector(".printHere");
 var resetBtn = document.querySelector(".resetBtn");
 
-var set = greeter();
+var storedData = localStorage.getItem('namesGreeted') ? JSON.parse(localStorage.getItem('namesGreeted')) : {};
+
+var set = greeter(storedData);
 function greetMe(){
   var userName = nameElement.value;
   var checkRadioButton = document.querySelector("input[name='language']:checked");
@@ -17,12 +19,14 @@ function greetMe(){
     count.innerHTML = set.greetCount();
     message.innerHTML = set.greet(userName, language);
     document.getElementById('theName').value = '';
+    localStorage.setItem('namesGreeted', JSON.stringify(set.returnMap()));
   }
 }
 greetBtn.addEventListener('click', greetMe);
 
 function resetMe(){
   count.innerHTML = 0;
+  localStorage.clear();
   document.getElementById('theName').value = '';
 }
 resetBtn.addEventListener('click', resetMe);

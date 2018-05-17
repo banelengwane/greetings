@@ -1,6 +1,6 @@
-function greeter(){
+function greeter(storage){
   var empty = '';
-  var tempObj = {};
+  var tempObj = storage || {};
   var takeIn = function(name){
     if(Number.isNaN(Number(name))){
       if(tempObj[name] === undefined){
@@ -13,25 +13,36 @@ function greeter(){
     }
   }
   function greet(name, taal){
-    if(Number.isNaN(Number(name))){
-      if(taal === 'english'){
-        return 'Good day ' + name ;
-      }else if (taal === 'afrikaans') {
-        return 'Goeie daag ' + name;
-      } else if (taal === 'xhosa') {
-        return 'Molo ' + name;
+    if(Number.isNaN(Number(taal))){
+      if(Number.isNaN(Number(name))){
+        if(taal === 'english'){
+          return 'Good day ' + name ;
+        }else if (taal === 'afrikaans') {
+          return 'Goeie daag ' + name;
+        } else if (taal === 'xhosa') {
+          return 'Molo ' + name;
+        }else{
+          return 'Select a language' ;
+        }
       }else{
-        return 'Select a language' ;
+        if(taal === 'english'){
+          return name +' is not a string';
+        } else if (taal === 'xhosa'){
+          return 'U- ' + name + ' uxolo faka i-STRING esisiso';
+        }else if (taal === 'afrikaans'){
+          return name + "  is nie n woord nie";
+        }
       }
     }else{
       if(taal === 'english'){
-        return name +' is not a string';
+        return 'Please select a language';
       } else if (taal === 'xhosa'){
-        return 'U- ' + name + ' uxolo faka i-STRING esisiso';
+        return 'Nceda ukhethe ulwimi lwakho';
       }else if (taal === 'afrikaans'){
-        return name + "  is nie n woord nie";
+        return "Kies asseblief 'n taal";
       }
     }
+
   }
 
   function greetCount(){
@@ -42,6 +53,7 @@ function greeter(){
       }
     }
     return sum;
+    //return tempObj.keys.length;
   }
   function returnMap(){
     return tempObj;
