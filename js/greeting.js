@@ -13,36 +13,25 @@ function greeter(storage){
     }
   }
   function greet(name, taal){
-    if(Number.isNaN(Number(taal))){
-      if(Number.isNaN(Number(name))){
-        if(taal === 'english'){
-          return 'Good day ' + name ;
-        }else if (taal === 'afrikaans') {
-          return 'Goeie daag ' + name;
-        } else if (taal === 'xhosa') {
-          return 'Molo ' + name;
-        }else{
-          return 'Select a language' ;
-        }
+    if(Number.isNaN(Number(name))){
+      if(taal === 'english'){
+        return 'Good day ' + name ;
+      }else if (taal === 'afrikaans') {
+        return 'Goeie daag ' + name;
+      } else if (taal === 'xhosa') {
+        return 'Molo ' + name;
       }else{
-        if(taal === 'english'){
-          return name +' is not a string';
-        } else if (taal === 'xhosa'){
-          return 'U- ' + name + ' uxolo faka i-STRING esisiso';
-        }else if (taal === 'afrikaans'){
-          return name + "  is nie n woord nie";
-        }
+        return 'Select a language' ;
       }
     }else{
       if(taal === 'english'){
-        return 'Please select a language';
+        return name +' is not a string';
       } else if (taal === 'xhosa'){
-        return 'Nceda ukhethe ulwimi lwakho';
+        return 'U- ' + name + ' uxolo faka i-STRING esisiso';
       }else if (taal === 'afrikaans'){
-        return "Kies asseblief 'n taal";
+        return name + "  is nie n woord nie";
       }
     }
-
   }
 
   function greetCount(){
