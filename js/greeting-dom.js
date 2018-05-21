@@ -13,8 +13,8 @@ function greetMe(){
   var checkRadioButton = document.querySelector("input[name='language']:checked");
   if(checkRadioButton){
     var language = checkRadioButton.value;
-    set.takeIn(userName.toLowerCase());
-    set.greet(userName.toLowerCase(), language);
+    set.takeIn(userName);
+    set.greet(userName, language);
 
     count.innerHTML = set.greetCount();
     message.innerHTML = set.greet(userName, language);

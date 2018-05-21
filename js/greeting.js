@@ -3,12 +3,13 @@ function greeter(storage){
   var tempObj = storage || {};
   var takeIn = function(name){
     if(Number.isNaN(Number(name))){
-      if(tempObj[name] === undefined){
-        tempObj[name] = 0;
+      var taken = name.toLowerCase();
+      if(tempObj[taken] === undefined){
+        tempObj[taken] = 0;
       }
-      if(tempObj[name] === 1){}
+      if(tempObj[taken] === 1){}
       else{
-        tempObj[name] += 1;
+        tempObj[taken] += 1;
       }
     }
   }
