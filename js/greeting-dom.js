@@ -8,12 +8,13 @@ var resetBtn = document.querySelector(".resetBtn");
 var storedData = localStorage.getItem('namesGreeted') ? JSON.parse(localStorage.getItem('namesGreeted')) : {};
 
 var set = greeter(storedData);
+count.innerHTML = set.greetCount();
 function greetMe(){
   var userName = nameElement.value;
   var checkRadioButton = document.querySelector("input[name='language']:checked");
   if(checkRadioButton){
     var language = checkRadioButton.value;
-    set.takeIn(userName);
+    
     set.greet(userName, language);
 
     count.innerHTML = set.greetCount();

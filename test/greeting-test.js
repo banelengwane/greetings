@@ -2,7 +2,7 @@ describe('The Greetings function' , function(){
     it('Should return the name entered by the user on the selected language' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      greetList.takeIn('Banele');
+
       greetList.greet('Banele', 'English')
       assert.equal(greetList.greet('Banele', 'English'), 'Good day Banele');
       assert.equal(greetList.greetCount(), 1);
@@ -11,8 +11,7 @@ describe('The Greetings function' , function(){
     it('Should return the number of names entered by the user' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      greetList.takeIn('Banele');
-      greetList.takeIn('Phindi');
+
       greetList.greet('Banele', 'English');
       greetList.greet('Phindi', 'English');
       assert.equal(greetList.greetCount(), 2);
@@ -21,23 +20,22 @@ describe('The Greetings function' , function(){
     it('Should should not greet numbers, i.e return a message if the input is not a string' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      greetList.takeIn(1000);
-      assert.equal(greetList.greet(1000, 'English'), 'Please enter your name');
+      //greetList.takeIn(1000);
+      assert.equal(greetList.greet(1000, 'English'), "Name can't be a number");
       assert.equal(greetList.greetCount(), 0);
     });
 
     it('Should should return a message if both inputs are empty' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      assert.equal(greetList.greet(), 'Select a language');
+      assert.equal(greetList.greet('', ''), 'Select a language');
       assert.equal(greetList.greetCount(), 0);
     });
 
     it('Should return the items inside the object' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      greetList.takeIn('Banele');
-      greetList.takeIn('Phindi');
+
       greetList.greet('Banele', 'English');
       greetList.greet('Phindi', 'English');
       assert.deepEqual(greetList.returnMap(), {banele: 1, phindi: 1} );
@@ -56,8 +54,8 @@ describe('The Greetings function' , function(){
     it('Should not greet a name twice regardless of the case (uppercase/lowercase)' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
-      greetList.takeIn('Banele');
-      greetList.takeIn('BANELE');
+      // greetList.takeIn('Banele');
+      // greetList.takeIn('BANELE');
       greetList.greet('Banele', 'English');
       greetList.greet('BANELE', 'English');
       assert.equal(greetList.greetCount(), 1);

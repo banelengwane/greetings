@@ -1,38 +1,44 @@
 function greeter(storage){
   var empty = '';
   var tempObj = storage || {};
-  var takeIn = function(name){
-    if(Number.isNaN(Number(name))){
-      var taken = name.toLowerCase();
-      if(tempObj[taken] === undefined){
-        tempObj[taken] = 0;
-      }
-      if(tempObj[taken] === 1){}
-      else{
-        tempObj[taken] += 1;
-      }
-    }
-  }
+
   function greet(name, taal){
-      if(Number.isNaN(Number(name))){
+
+      if (!taal){
+          return 'Select a language'
+      }
+
+      if (name !== "" && !isNaN(name)){
+          return "Name can't be a number";
+      }
+
+      if (!name){
+        if(taal === 'English'){
+          return 'Please enter your name';
+        } else if (taal === 'IsiXhosa'){
+          return 'Nceda ufake igama lakho';
+        } else if (taal === 'Afrikaans'){
+          return "Voer asseblief jou naam in";
+        }
+      }
+
+      //if(Number.isNaN(Number(name))){
+        var taken = name.toLowerCase();
+        if(tempObj[taken] === undefined){
+          tempObj[taken] = 0;
+        }
+        if(tempObj[taken] === 1){}
+        else{
+          tempObj[taken] += 1;
+        }
         if(taal === 'English'){
           return 'Good day ' + name ;
         }else if (taal === 'Afrikaans') {
           return 'Goeie daag ' + name;
         } else if (taal === 'IsiXhosa') {
           return 'Molo ' + name;
-        }else{
-          return 'Select a language' ;
         }
-      }else{
-        if(taal === 'English'){
-          return 'Please enter your name';
-        } else if (taal === 'IsiXhosa'){
-          return 'Nceda ufake igama lakho';
-        }else if (taal === 'Afrikaans'){
-          return "Voer asseblief jou naam in";
-        }
-      }
+      //}
   }
 
   function greetCount(){
@@ -55,7 +61,6 @@ function greeter(storage){
   return{
     greet,
     greetCount,
-    takeIn,
     returnMap,
     clear
   };
