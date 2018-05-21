@@ -3,8 +3,8 @@ describe('The Greetings function' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
       greetList.takeIn('Banele');
-      greetList.greet('Banele', 'english')
-      assert.equal(greetList.greet('Banele', 'english'), 'Good day Banele');
+      greetList.greet('Banele', 'English')
+      assert.equal(greetList.greet('Banele', 'English'), 'Good day Banele');
     });
 
     it('Should return the number of names entered by the user' , function(){
@@ -12,8 +12,8 @@ describe('The Greetings function' , function(){
       var greetList = greeter(Obj);
       greetList.takeIn('Banele');
       greetList.takeIn('Phindi');
-      greetList.greet('Banele', 'english');
-      greetList.greet('Phindi', 'english');
+      greetList.greet('Banele', 'English');
+      greetList.greet('Phindi', 'English');
       assert.equal(greetList.greetCount(), 2);
     });
 
@@ -21,9 +21,32 @@ describe('The Greetings function' , function(){
       var Obj = {};
       var greetList = greeter(Obj);
       greetList.takeIn(1000);
-      assert.equal(greetList.greet(1000, 'english'), '1000 is not a string');
+      assert.equal(greetList.greet(1000, 'English'), 'Please enter your name');
     });
 
+    it('Should should return a message if both inputs are empty' , function(){
+      var Obj = {};
+      var greetList = greeter(Obj);
+      assert.equal(greetList.greet(), 'Select a language');
+    });
+
+    it('Should return the items inside the object' , function(){
+      var Obj = {};
+      var greetList = greeter(Obj);
+      greetList.takeIn('Banele');
+      greetList.takeIn('Phindi');
+      greetList.greet('Banele', 'English');
+      greetList.greet('Phindi', 'English');
+      assert.deepEqual(greetList.returnMap(), {Banele: 1, Phindi: 1} );
+    });
+
+    it('Should return a message if the name is null, the message will be on the selected language' , function(){
+      var Obj = {};
+      var greetList = greeter(Obj);
+      assert.equal(greetList.greet("",'English'), 'Please enter your name');
+      assert.equal(greetList.greet("",'IsiXhosa'), 'Nceda ufake igama lakho');
+      assert.equal(greetList.greet("",'Afrikaans'), 'Voer asseblief jou naam in');
+    });
 
 
 });

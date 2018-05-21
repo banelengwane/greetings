@@ -20,6 +20,8 @@ function greetMe(){
     message.innerHTML = set.greet(userName, language);
     document.getElementById('theName').value = '';
     localStorage.setItem('namesGreeted', JSON.stringify(set.returnMap()));
+  }else{
+    message.innerHTML = 'Select a Language';
   }
 }
 greetBtn.addEventListener('click', greetMe);
