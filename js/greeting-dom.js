@@ -7,20 +7,20 @@ var resetBtn = document.querySelector(".resetBtn");
 
 var storedData = localStorage.getItem('namesGreeted') ? JSON.parse(localStorage.getItem('namesGreeted')) : {};
 
-var set = greeter(storedData);
-count.innerHTML = set.greetCount();
+var greeter = Greeter(storedData);
+count.innerHTML = greeter.greetCount();
 function greetMe(){
   var userName = nameElement.value;
   var checkRadioButton = document.querySelector("input[name='language']:checked");
   if(checkRadioButton){
     var language = checkRadioButton.value;
-    
-    set.greet(userName, language);
 
-    count.innerHTML = set.greetCount();
-    message.innerHTML = set.greet(userName, language);
+    greeter.greet(userName, language);
+
+    count.innerHTML = greeter.greetCount();
+    message.innerHTML = greeter.greet(userName, language);
     document.getElementById('theName').value = '';
-    localStorage.setItem('namesGreeted', JSON.stringify(set.returnMap()));
+    localStorage.setItem('namesGreeted', JSON.stringify(gre.returnMap()));
   }else{
     message.innerHTML = 'Select a Language';
   }

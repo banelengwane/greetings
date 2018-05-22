@@ -1,4 +1,4 @@
-function greeter(storage){
+function Greeter(storage){
   var empty = '';
   var tempObj = storage || {};
 
