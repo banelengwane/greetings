@@ -20,7 +20,7 @@ function greetMe(){
     count.innerHTML = greeter.greetCount();
     message.innerHTML = greeter.greet(userName, language);
     document.getElementById('theName').value = '';
-    localStorage.setItem('namesGreeted', JSON.stringify(gre.returnMap()));
+    localStorage.setItem('namesGreeted', JSON.stringify(greeter.returnMap()));
   }else{
     message.innerHTML = 'Select a Language';
   }

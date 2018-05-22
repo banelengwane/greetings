@@ -9,7 +9,14 @@ function Greeter(storage){
       }
 
       if (name !== "" && !isNaN(name)){
+        if(taal === 'English'){
           return "Name can't be a number";
+        } else if (taal === 'IsiXhosa'){
+          return 'Nceda ufake igama elililo';
+        } else if (taal === 'Afrikaans'){
+          return "Naam kan nie nommer wees nie";
+        }
+
       }
 
       if (!name){
