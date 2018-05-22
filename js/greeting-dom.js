@@ -28,6 +28,7 @@ function greetMe(){
 greetBtn.addEventListener('click', greetMe);
 
 function resetMe(){
+  greeter.clean();
   count.innerHTML = 0;
   localStorage.clear();
   document.getElementById('theName').value = '';

@@ -62,13 +62,13 @@ function Greeter(storage){
     return tempObj;
   }
 
-  function clear(){
-    return empty;
+  function clean(){
+    tempObj = {};
   }
   return{
     greet,
     greetCount,
     returnMap,
-    clear
+    clean
   };
 }
